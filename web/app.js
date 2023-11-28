@@ -2159,8 +2159,11 @@ const PDFViewerApplication = {
 if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
   const HOSTED_VIEWER_ORIGINS = [
     "null",
-    "http://mozilla.github.io",
-    "https://mozilla.github.io",
+    "https://sylva-pdf.pages.dev",
+    "https://pdf.sylva.ac",
+    "https://api.dev.sylva.ac",
+    "https://identity.test.sylva.ac",
+    "https://identity.ch.sylva.ac",
   ];
   // eslint-disable-next-line no-var
   var validateFileURL = function (file) {
@@ -2177,7 +2180,7 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       // Removing of the following line will not guarantee that the viewer will
       // start accepting URLs from foreign origin -- CORS headers on the remote
       // server must be properly configured.
-      if (fileOrigin !== viewerOrigin) {
+      if (!fileOrigin.includes("sylva.ac")) {
         throw new Error("file origin does not match viewer's");
       }
     } catch (ex) {

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gulp generic
+cd build/generic && cp -r ./build ./web
+cd web
+mv viewer.html index.html
+npx wrangler pages deploy . --branch=main
+echo "Done"
